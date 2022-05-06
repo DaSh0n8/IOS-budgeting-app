@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2172712823CEBA000A520B /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172702823CEBA000A520B /* Spending.swift */; };
+		CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172722823D14E000A520B /* AddSpendingDelegate.swift */; };
+		CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */; };
+		CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */; };
+		CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */; };
+		CA4CB5BD281AF09100DF04C5 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5BC281AF09100DF04C5 /* BudgetViewController.swift */; };
+		CA4CB5BF281AF0A600DF04C5 /* SetBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5BE281AF0A600DF04C5 /* SetBudgetViewController.swift */; };
+		CA651D3128211E7500E605B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA651D3028211E7500E605B8 /* GoogleService-Info.plist */; };
 		CAF6F5C028195A7A001EDECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6F5BF28195A7A001EDECD /* AppDelegate.swift */; };
 		CAF6F5C228195A7A001EDECD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6F5C128195A7A001EDECD /* SceneDelegate.swift */; };
 		CAF6F5C428195A7A001EDECD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6F5C328195A7A001EDECD /* ViewController.swift */; };
@@ -16,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA2172702823CEBA000A520B /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
+		CA2172722823D14E000A520B /* AddSpendingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingDelegate.swift; sourceTree = "<group>"; };
+		CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCountTableViewCell.swift; sourceTree = "<group>"; };
+		CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingViewController.swift; sourceTree = "<group>"; };
+		CA4CB5BC281AF09100DF04C5 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		CA4CB5BE281AF0A600DF04C5 /* SetBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBudgetViewController.swift; sourceTree = "<group>"; };
+		CA651D3028211E7500E605B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAF6F5BC28195A7A001EDECD /* FIT3178 Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FIT3178 Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF6F5BF28195A7A001EDECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAF6F5C128195A7A001EDECD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +79,14 @@
 				CAF6F5C828195A7E001EDECD /* Assets.xcassets */,
 				CAF6F5CA28195A7E001EDECD /* LaunchScreen.storyboard */,
 				CAF6F5CD28195A7E001EDECD /* Info.plist */,
+				CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */,
+				CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */,
+				CA4CB5BC281AF09100DF04C5 /* BudgetViewController.swift */,
+				CA4CB5BE281AF0A600DF04C5 /* SetBudgetViewController.swift */,
+				CA651D3028211E7500E605B8 /* GoogleService-Info.plist */,
+				CA2172702823CEBA000A520B /* Spending.swift */,
+				CA2172722823D14E000A520B /* AddSpendingDelegate.swift */,
+				CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */,
 			);
 			path = "FIT3178 Assignment";
 			sourceTree = "<group>";
@@ -111,6 +135,9 @@
 				Base,
 			);
 			mainGroup = CAF6F5B328195A79001EDECD;
+			packageReferences = (
+				CA6379BE2822D2F000ADF8E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CAF6F5BD28195A7A001EDECD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF6F5CC28195A7E001EDECD /* LaunchScreen.storyboard in Resources */,
+				CA651D3128211E7500E605B8 /* GoogleService-Info.plist in Resources */,
 				CAF6F5C928195A7E001EDECD /* Assets.xcassets in Resources */,
 				CAF6F5C728195A7A001EDECD /* Main.storyboard in Resources */,
 			);
@@ -139,8 +167,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF6F5C428195A7A001EDECD /* ViewController.swift in Sources */,
+				CA2172712823CEBA000A520B /* Spending.swift in Sources */,
+				CA4CB5BF281AF0A600DF04C5 /* SetBudgetViewController.swift in Sources */,
+				CA4CB5BD281AF09100DF04C5 /* BudgetViewController.swift in Sources */,
+				CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */,
+				CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */,
 				CAF6F5C028195A7A001EDECD /* AppDelegate.swift in Sources */,
 				CAF6F5C228195A7A001EDECD /* SceneDelegate.swift in Sources */,
+				CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */,
+				CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +393,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA6379BE2822D2F000ADF8E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = CAF6F5B428195A79001EDECD /* Project object */;
 }
