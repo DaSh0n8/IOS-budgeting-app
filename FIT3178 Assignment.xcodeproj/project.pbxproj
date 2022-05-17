@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CA0253F828331E3F00852649 /* App-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA0253F628331E3F00852649 /* App-DataModel.xcdatamodeld */; };
-		CA2172712823CEBA000A520B /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172702823CEBA000A520B /* Spending.swift */; };
 		CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172722823D14E000A520B /* AddSpendingDelegate.swift */; };
+		CA2383F82833B00A00EFA840 /* Spending+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383F62833B00A00EFA840 /* Spending+CoreDataClass.swift */; };
+		CA2383F92833B00A00EFA840 /* Spending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383F72833B00A00EFA840 /* Spending+CoreDataProperties.swift */; };
+		CA2383FC2833B0FF00EFA840 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383FB2833B0FF00EFA840 /* MulticastDelegate.swift */; };
+		CA2383FE2833B12B00EFA840 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383FD2833B12B00EFA840 /* DatabaseProtocol.swift */; };
+		CA2384002833B27200EFA840 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383FF2833B27200EFA840 /* CoreDataController.swift */; };
 		CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */; };
 		CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */; };
 		CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */; };
@@ -27,8 +31,12 @@
 
 /* Begin PBXFileReference section */
 		CA0253F728331E3F00852649 /* App-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "App-DataModel.xcdatamodel"; sourceTree = "<group>"; };
-		CA2172702823CEBA000A520B /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
 		CA2172722823D14E000A520B /* AddSpendingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingDelegate.swift; sourceTree = "<group>"; };
+		CA2383F62833B00A00EFA840 /* Spending+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CA2383F72833B00A00EFA840 /* Spending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		CA2383FB2833B0FF00EFA840 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MulticastDelegate.swift; path = "FIT3178 Assignment/MulticastDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		CA2383FD2833B12B00EFA840 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		CA2383FF2833B27200EFA840 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCountTableViewCell.swift; sourceTree = "<group>"; };
 		CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingViewController.swift; sourceTree = "<group>"; };
@@ -60,9 +68,21 @@
 		CA0253F528331E2200852649 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				CA2383F62833B00A00EFA840 /* Spending+CoreDataClass.swift */,
+				CA2383F72833B00A00EFA840 /* Spending+CoreDataProperties.swift */,
 				CA0253F628331E3F00852649 /* App-DataModel.xcdatamodeld */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		CA2383FA2833B0E800EFA840 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				CA2383FB2833B0FF00EFA840 /* MulticastDelegate.swift */,
+				CA2383FD2833B12B00EFA840 /* DatabaseProtocol.swift */,
+				CA2383FF2833B27200EFA840 /* CoreDataController.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		CAF6F5B328195A79001EDECD = {
@@ -84,6 +104,7 @@
 		CAF6F5BE28195A7A001EDECD /* FIT3178 Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CA2383FA2833B0E800EFA840 /* Database */,
 				CA0253F528331E2200852649 /* DataModel */,
 				CAF6F5BF28195A7A001EDECD /* AppDelegate.swift */,
 				CAF6F5C128195A7A001EDECD /* SceneDelegate.swift */,
@@ -97,7 +118,6 @@
 				CA4CB5BC281AF09100DF04C5 /* BudgetViewController.swift */,
 				CA4CB5BE281AF0A600DF04C5 /* SetBudgetViewController.swift */,
 				CA651D3028211E7500E605B8 /* GoogleService-Info.plist */,
-				CA2172702823CEBA000A520B /* Spending.swift */,
 				CA2172722823D14E000A520B /* AddSpendingDelegate.swift */,
 				CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */,
 				CAD5D7742824E9C5006F42FF /* ViewSpendingViewController.swift */,
@@ -182,16 +202,20 @@
 			files = (
 				CAD5D7752824E9C5006F42FF /* ViewSpendingViewController.swift in Sources */,
 				CAF6F5C428195A7A001EDECD /* ViewController.swift in Sources */,
-				CA2172712823CEBA000A520B /* Spending.swift in Sources */,
 				CA4CB5BF281AF0A600DF04C5 /* SetBudgetViewController.swift in Sources */,
 				CA4CB5BD281AF09100DF04C5 /* BudgetViewController.swift in Sources */,
 				CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */,
 				CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */,
 				CAF6F5C028195A7A001EDECD /* AppDelegate.swift in Sources */,
+				CA2383F82833B00A00EFA840 /* Spending+CoreDataClass.swift in Sources */,
 				CAF6F5C228195A7A001EDECD /* SceneDelegate.swift in Sources */,
+				CA2383FC2833B0FF00EFA840 /* MulticastDelegate.swift in Sources */,
+				CA2384002833B27200EFA840 /* CoreDataController.swift in Sources */,
 				CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */,
+				CA2383F92833B00A00EFA840 /* Spending+CoreDataProperties.swift in Sources */,
 				CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */,
 				CA0253F828331E3F00852649 /* App-DataModel.xcdatamodeld in Sources */,
+				CA2383FE2833B12B00EFA840 /* DatabaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

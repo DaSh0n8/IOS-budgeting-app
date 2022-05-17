@@ -9,12 +9,14 @@ import UIKit
 
 class AddSpendingViewController: UIViewController {
 
-    weak var spendingDelegate: AddSpendingDelegate?
+    weak var databaseController: DatabaseProtocol?
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
         // Do any additional setup after loading the view.
     }
     
@@ -42,8 +44,8 @@ class AddSpendingViewController: UIViewController {
             }
             displayMessage(title: "Not all fields filled", message: errorMsg)
         }
-        let spending = Spending (amount: amount, category: category, desc: description, date: date)
-        let _ = spendingDelegate?.addSpending(spending)
+        let _ = databaseController?.addSpending(amount: amount, category: category, desc: description, date: date)
+        
         navigationController?.popViewController(animated: true)
     }
     

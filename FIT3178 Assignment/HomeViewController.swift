@@ -7,15 +7,68 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddSpendingDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, DatabaseListener {
     
     let SECTION_SPENDING = 0
     let SECTION_INFO = 1
     let CELL_SPENDING = "spendingCell"
     let CELL_INFO = "totalCell"
     var allSpendings: [Spending] = []
+    var filteredSpendings: [Spending] = []
     var spendingDetails : Spending?
-    weak var spendingDelegate: AddSpendingDelegate?
+    var listenerType = ListenerType.spending
+    weak var databaseController : DatabaseProtocol?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+        filteredSpendings = allSpendings
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search by category"
+        navigationItem.searchController = searchController
+        
+        definesPresentationContext = true
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func onAllSpendingsChange(change: DatabaseChange, spendings: [Spending]) {
+        allSpendings = spendings
+        updateSearchResults(for: navigationItem.searchController!)
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text?.lowercased()
+        else {
+            return
+        }
+        if searchText.count > 0 {
+            filteredSpendings = allSpendings.filter({ (spending: Spending) -> Bool in
+                return (spending.category?.lowercased().contains(searchText) ?? false)
+            })
+       } else {
+           filteredSpendings = allSpendings
+       }
+        tableView.reloadData()
+    }
     
     func addSpending(_ newSpending: Spending) -> Bool {
         tableView.performBatchUpdates({
@@ -33,7 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section{
         case SECTION_SPENDING:
-            return allSpendings.count
+            return filteredSpendings.count
         case SECTION_INFO:
             return 1
         default:
@@ -45,7 +98,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.section == SECTION_SPENDING{
             let spendingCell = tableView.dequeueReusableCell(withIdentifier: CELL_SPENDING, for: indexPath)
             var content = spendingCell.defaultContentConfiguration()
-            let spending = allSpendings[indexPath.row]
+            let spending = filteredSpendings[indexPath.row]
             content.text = "$ \(spending.amount ?? "0") "
             content.secondaryText = spending.category
             spendingCell.contentConfiguration = content
@@ -54,7 +107,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else {
             let infoCell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath) as! SpendingCountTableViewCell
-            infoCell.totalLabel?.text = "\(allSpendings.count) spendings this month"
+            infoCell.totalLabel?.text = "\(filteredSpendings.count) spendings this month"
 
             return infoCell
         }
@@ -73,29 +126,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == SECTION_SPENDING{
-            tableView.performBatchUpdates({
-                if let index = self.allSpendings.firstIndex(of: allSpendings[indexPath.row]){
-                    self.allSpendings.remove(at: index)
-                }
-                self.allSpendings.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                self.tableView.reloadSections([SECTION_INFO], with: .automatic)
-            }, completion: nil)
+            let spending = filteredSpendings[indexPath.row]
+            databaseController?.deleteSpending(spending: spending)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thisSpending = allSpendings[indexPath.row]
+        let thisSpending = filteredSpendings[indexPath.row]
         spendingDetails = thisSpending
         self.performSegue(withIdentifier: "viewSpendingSegue", sender: self)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -105,13 +144,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addSpendingSegue" {
-            let destination = segue.destination as! AddSpendingViewController
-            destination.spendingDelegate = self
-        } else if segue.identifier == "viewSpendingSegue"{
+        if segue.identifier == "viewSpendingSegue" {
             let destination = segue.destination as! ViewSpendingViewController
             destination.viewedSpending = spendingDetails
-        }
     }
     /*
     // MARK: - Navigation
@@ -123,4 +158,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
 }
