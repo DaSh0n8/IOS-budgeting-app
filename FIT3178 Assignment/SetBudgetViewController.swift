@@ -13,7 +13,7 @@ protocol SetBudgetDelegate: AnyObject{
 
 class SetBudgetViewController: UIViewController {
 
-    weak var delegate: SetBudgetDelegate?
+    weak var delegate: SetBudgetDelegate? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,6 @@ class SetBudgetViewController: UIViewController {
         let newBudget = budgetTextField.text
         delegate?.setToBudget(newBudget!)
         navigationController?.popViewController(animated: true)
-        
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

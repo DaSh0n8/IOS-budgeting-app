@@ -12,9 +12,9 @@ class Spending: NSObject {
     let amount: String?
     let category: String?
     let desc: String?
-    let date: String?
+    let date: Date
     
-    init(amount: String, category: String, desc: String, date: String){
+    init(amount: String, category: String, desc: String, date: Date){
         self.amount = amount
         self.category = category
         self.desc = desc

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let CELL_SPENDING = "spendingCell"
     let CELL_INFO = "totalCell"
     var allSpendings: [Spending] = []
+    var spendingDetails : Spending?
     weak var spendingDelegate: AddSpendingDelegate?
     
     func addSpending(_ newSpending: Spending) -> Bool {
@@ -45,15 +46,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let spendingCell = tableView.dequeueReusableCell(withIdentifier: CELL_SPENDING, for: indexPath)
             var content = spendingCell.defaultContentConfiguration()
             let spending = allSpendings[indexPath.row]
-            content.text = spending.amount
+            content.text = "$ \(spending.amount ?? "0") "
             content.secondaryText = spending.category
             spendingCell.contentConfiguration = content
             
             return spendingCell
-        } else {
+        }
+        else {
             let infoCell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath) as! SpendingCountTableViewCell
             infoCell.totalLabel?.text = "\(allSpendings.count) spendings this month"
-            
+
             return infoCell
         }
     }
@@ -82,12 +84,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let thisSpending = allSpendings[indexPath.row]
+        spendingDetails = thisSpending
+        self.performSegue(withIdentifier: "viewSpendingSegue", sender: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
-        //tableView.datasource = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -101,6 +108,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "addSpendingSegue" {
             let destination = segue.destination as! AddSpendingViewController
             destination.spendingDelegate = self
+        } else if segue.identifier == "viewSpendingSegue"{
+            let destination = segue.destination as! ViewSpendingViewController
+            destination.viewedSpending = spendingDetails
         }
     }
     /*

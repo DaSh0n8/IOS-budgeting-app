@@ -9,7 +9,6 @@ import UIKit
 
 class BudgetViewController: UIViewController, SetBudgetDelegate {
     func setToBudget(_ budget: String) {
-        //let budget = String(budget)
         budgetText.text = budget
     }
     
@@ -24,13 +23,17 @@ class BudgetViewController: UIViewController, SetBudgetDelegate {
     var spending: Int?
     
 
+    @IBOutlet weak var monthText: UILabel!
     @IBOutlet weak var spendingText: UILabel!
     @IBOutlet weak var budgetText: UILabel!
     
-    
     @IBAction func setBudget(_ sender: Any) {
         performSegue(withIdentifier: "setBudgetSegue", sender: self)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! SetBudgetViewController
+        destination.delegate = self
     }
     
     
