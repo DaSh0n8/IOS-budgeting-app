@@ -246,14 +246,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="totalCell" id="2Vv-0L-ymx" customClass="SpendingCountTableViewCell" customModule="FIT3178_Assignment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="93" width="374" height="36.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Vv-0L-ymx" id="xxm-Bm-XXE">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="36.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gU6-tu-vYv">
-                                                    <rect key="frame" x="20" y="11" width="334" height="14"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
@@ -280,15 +280,25 @@
                                     <action selector="addSpending:" destination="jIW-sT-8nn" eventType="touchUpInside" id="Mw3-Qp-cbW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Spending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spm-cN-EBV">
+                                <rect key="frame" x="0.0" y="113" width="414" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d7k-Ze-aDW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0xV-9T-hAz" firstAttribute="leading" secondItem="d7k-Ze-aDW" secondAttribute="leading" constant="20" id="KzT-gB-SjN"/>
                             <constraint firstAttribute="bottom" secondItem="0xV-9T-hAz" secondAttribute="bottom" constant="10" id="QM8-sW-Pfk"/>
+                            <constraint firstItem="spm-cN-EBV" firstAttribute="top" secondItem="d7k-Ze-aDW" secondAttribute="top" constant="25" id="Swy-YB-HrA"/>
+                            <constraint firstItem="SU8-op-7mm" firstAttribute="top" secondItem="spm-cN-EBV" secondAttribute="bottom" constant="25" id="aub-1A-WVp"/>
                             <constraint firstItem="0xV-9T-hAz" firstAttribute="top" secondItem="SU8-op-7mm" secondAttribute="bottom" constant="30" id="mKI-6R-dn1"/>
                             <constraint firstItem="SU8-op-7mm" firstAttribute="leading" secondItem="d7k-Ze-aDW" secondAttribute="leading" constant="60" id="o1J-4j-99q"/>
+                            <constraint firstItem="spm-cN-EBV" firstAttribute="leading" secondItem="d7k-Ze-aDW" secondAttribute="leading" id="qbb-md-9ao"/>
                             <constraint firstItem="d7k-Ze-aDW" firstAttribute="trailing" secondItem="0xV-9T-hAz" secondAttribute="trailing" constant="20" id="sFN-78-0uO"/>
+                            <constraint firstItem="d7k-Ze-aDW" firstAttribute="trailing" secondItem="spm-cN-EBV" secondAttribute="trailing" id="sQV-7h-qsh"/>
                             <constraint firstItem="SU8-op-7mm" firstAttribute="top" secondItem="d7k-Ze-aDW" secondAttribute="top" constant="70" id="snd-Ek-zST"/>
                             <constraint firstItem="d7k-Ze-aDW" firstAttribute="trailing" secondItem="SU8-op-7mm" secondAttribute="trailing" constant="60" id="vZU-3Y-anG"/>
                         </constraints>
@@ -296,6 +306,7 @@
                     <navigationItem key="navigationItem" title="Home" id="SlM-uP-HbJ"/>
                     <connections>
                         <outlet property="tableView" destination="0xV-9T-hAz" id="IUh-2j-Wsd"/>
+                        <outlet property="totalSpendingLabel" destination="spm-cN-EBV" id="UbV-y0-x4d"/>
                         <segue destination="evC-KQ-WxM" kind="show" identifier="addSpendingSegue" id="197-ap-qGi"/>
                         <segue destination="OkB-Z2-CbC" kind="show" identifier="viewSpendingSegue" id="750-EX-Omx"/>
                     </connections>
@@ -508,17 +519,38 @@
             </objects>
             <point key="canvasLocation" x="-336.23188405797106" y="1453.7946428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings-->
         <scene sceneID="9k5-dN-cwT">
             <objects>
-                <viewController id="2Wg-fo-eYC" sceneMemberID="viewController">
+                <viewController id="2Wg-fo-eYC" customClass="SettingsViewController" customModule="FIT3178_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYD-88-Cr5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJH-ia-CJN">
+                                <rect key="frame" x="20" y="133" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="x2N-7r-Be9">
+                                <rect key="frame" x="345" y="133" width="51" height="31"/>
+                                <connections>
+                                    <action selector="onClickSwitch:" destination="2Wg-fo-eYC" eventType="valueChanged" id="8eh-bK-hiY"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Fum-Hs-9Oz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MJH-ia-CJN" firstAttribute="leading" secondItem="Fum-Hs-9Oz" secondAttribute="leading" constant="20" id="Ijj-EG-ZJ2"/>
+                            <constraint firstItem="x2N-7r-Be9" firstAttribute="top" secondItem="Fum-Hs-9Oz" secondAttribute="top" constant="45" id="VtX-9d-7z8"/>
+                            <constraint firstItem="x2N-7r-Be9" firstAttribute="leading" secondItem="MJH-ia-CJN" secondAttribute="trailing" constant="240" id="eYP-Zn-VaY"/>
+                            <constraint firstItem="Fum-Hs-9Oz" firstAttribute="trailing" secondItem="x2N-7r-Be9" secondAttribute="trailing" constant="20" id="o1C-QH-Px2"/>
+                            <constraint firstItem="MJH-ia-CJN" firstAttribute="top" secondItem="Fum-Hs-9Oz" secondAttribute="top" constant="45" id="xVy-sd-QZv"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vKw-O2-M7N"/>
+                    <navigationItem key="navigationItem" title="Settings" id="vKw-O2-M7N"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vj-1R-Fht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

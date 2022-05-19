@@ -24,7 +24,7 @@ class ViewSpendingViewController: UIViewController {
         
         categoryText.text = viewedSpending.category
         dateText.text = dateFormatter.string(from: viewedSpending.date!)
-        amountText.text = "$ \(viewedSpending.amount ?? "0")"
+        amountText.text = "$ \(viewedSpending.amount)"
         descriptionText.text = viewedSpending.desc
         
 

@@ -45,7 +45,7 @@ class CoreDataController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
-    func addSpending(amount: String, category: String, desc: String, date: Date) -> Spending {
+    func addSpending(amount: Int32, category: String, desc: String, date: Date) -> Spending {
         let spending = NSEntityDescription.insertNewObject(forEntityName: "Spending", into: persistentContainer.viewContext) as! Spending
         spending.amount = amount
         spending.category = category
@@ -53,6 +53,13 @@ class CoreDataController: NSObject, DatabaseProtocol {
         spending.date = date
         
         return spending
+    }
+    
+    func addBudget(budget: Int32) -> Budget {
+        let newBudget = NSEntityDescription.insertNewObject(forEntityName: "Budget", into: persistentContainer.viewContext) as! Budget
+        newBudget.budget = budget
+        
+        return newBudget
     }
     
     func deleteSpending(spending: Spending) {

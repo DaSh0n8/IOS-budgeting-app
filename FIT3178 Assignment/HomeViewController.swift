@@ -18,6 +18,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var spendingDetails : Spending?
     var listenerType = ListenerType.spending
     weak var databaseController : DatabaseProtocol?
+    var totalSpending: Int32 = 0
+    
+    @IBOutlet weak var totalSpendingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.searchController = searchController
         
         definesPresentationContext = true
+        
+        let x = String(totalSpending)
+        totalSpendingLabel.text = x
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -73,7 +79,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func addSpending(_ newSpending: Spending) -> Bool {
         tableView.performBatchUpdates({
             allSpendings.append(newSpending)
-            
+                    
             tableView.insertRows(at: [IndexPath(row: allSpendings.count - 1, section: SECTION_SPENDING)], with: .automatic)
         }, completion: nil)
         return true
@@ -99,7 +105,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let spendingCell = tableView.dequeueReusableCell(withIdentifier: CELL_SPENDING, for: indexPath)
             var content = spendingCell.defaultContentConfiguration()
             let spending = filteredSpendings[indexPath.row]
-            content.text = "$ \(spending.amount ?? "0") "
+            content.text = "$ \(spending.amount) "
             content.secondaryText = spending.category
             spendingCell.contentConfiguration = content
             

@@ -8,15 +8,19 @@
 import UIKit
 
 protocol SetBudgetDelegate: AnyObject{
-    func setToBudget(_ budget: String)
+    func setToBudget(_ budget: Int32)
 }
 
 class SetBudgetViewController: UIViewController {
 
-    weak var delegate: SetBudgetDelegate? 
+    weak var delegate: SetBudgetDelegate?
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
 
         // Do any additional setup after loading the view.
     }
@@ -24,8 +28,11 @@ class SetBudgetViewController: UIViewController {
     @IBOutlet weak var budgetTextField: UITextField!
     
     @IBAction func saveBudget(_ sender: Any) {
-        let newBudget = budgetTextField.text
-        delegate?.setToBudget(newBudget!)
+        guard let newBudget: Int32 = Int32(budgetTextField.text!) else {
+            return
+        }
+        let _ = databaseController?.addBudget(budget: newBudget)
+        delegate?.setToBudget(newBudget)
         navigationController?.popViewController(animated: true)
     }
     

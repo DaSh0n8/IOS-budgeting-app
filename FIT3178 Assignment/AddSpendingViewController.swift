@@ -11,6 +11,7 @@ class AddSpendingViewController: UIViewController {
 
     weak var databaseController: DatabaseProtocol?
     let dateFormatter = DateFormatter()
+    var totalSpending: Int32 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +32,11 @@ class AddSpendingViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateField.date
         
-        guard let amount = amountTextField.text, let category = categoryTextField.text, let description = descriptionTextField.text else{
+        guard let amount: Int32 = Int32(amountTextField.text!), let category = categoryTextField.text, let description = descriptionTextField.text else{
             return
         }
-        if amount.isEmpty || category.isEmpty {
+        if category.isEmpty {
             var errorMsg = "Please ensure all fields are filled: \n"
-            if amount.isEmpty{
-                errorMsg += "Must provide amount \n"
-            }
             if category.isEmpty{
                 errorMsg += "Must provide category \n"
             }

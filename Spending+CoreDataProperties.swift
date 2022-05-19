@@ -2,7 +2,7 @@
 //  Spending+CoreDataProperties.swift
 //  FIT3178 Assignment
 //
-//  Created by Brandon Lim on 17/05/2022.
+//  Created by Brandon Lim on 18/05/2022.
 //
 //
 
@@ -16,10 +16,10 @@ extension Spending {
         return NSFetchRequest<Spending>(entityName: "Spending")
     }
 
-    @NSManaged public var amount: String?
+    @NSManaged public var amount: Int32
     @NSManaged public var category: String?
-    @NSManaged public var desc: String?
     @NSManaged public var date: Date?
+    @NSManaged public var desc: String?
 
 }
 

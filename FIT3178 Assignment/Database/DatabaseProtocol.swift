@@ -29,6 +29,7 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     
-    func addSpending(amount: String, category: String, desc: String, date: Date) -> Spending
+    func addSpending(amount: Int32, category: String, desc: String, date: Date) -> Spending
+    func addBudget(budget: Int32) -> Budget
     func deleteSpending(spending: Spending)
 }

@@ -8,8 +8,8 @@
 import UIKit
 
 class BudgetViewController: UIViewController, SetBudgetDelegate {
-    func setToBudget(_ budget: String) {
-        budgetText.text = budget
+    func setToBudget(_ budget: Int32) {
+        budgetText.text = "$ \(String(budget))"
     }
     
     override func viewDidLoad() {
