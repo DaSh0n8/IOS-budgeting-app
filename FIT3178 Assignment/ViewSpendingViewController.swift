@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class ViewSpendingViewController: UIViewController {
 
@@ -27,11 +28,23 @@ class ViewSpendingViewController: UIViewController {
         amountText.text = "$ \(viewedSpending.amount)"
         descriptionText.text = viewedSpending.desc
         
-
+        if viewedSpending.category == "Food" {
+            categoryView.backgroundColor = UIColor(named: "GreenColour")
+        } else if viewedSpending.category == "Shopping" {
+            categoryView.backgroundColor = UIColor(named: "PurpleColour")
+        } else if viewedSpending.category == "Bills" {
+            categoryView.backgroundColor = UIColor(named: "LightBlueColour")
+        } else if viewedSpending.category == "Groceries" {
+            categoryView.backgroundColor = UIColor(named: "RedColour")
+        } else if viewedSpending.category == "Transport" {
+            categoryView.backgroundColor = UIColor(named: "YellowColour")
+        }
+        
         // Do any additional setup after loading the view.
     }
     
     @IBOutlet weak var categoryText: UILabel!
+    @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var amountText: UILabel!
     @IBOutlet weak var descriptionText: UILabel!
