@@ -7,17 +7,27 @@
 
 import UIKit
 
-class AddSpendingViewController: UIViewController {
-
+class AddSpendingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     weak var databaseController: DatabaseProtocol?
     let dateFormatter = DateFormatter()
     var totalSpending: Int32 = 0
+    let categories = ["Food","Bills","Transport","Groceries","Shopping","Others"]
+    var pickerView = UIPickerView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        categoryTextField.inputView = pickerView
+        categoryTextField.textAlignment = .center
+        categoryTextField.placeholder = "Select category"
         // Do any additional setup after loading the view.
     }
     
@@ -43,8 +53,25 @@ class AddSpendingViewController: UIViewController {
             displayMessage(title: "Not all fields filled", message: errorMsg)
         }
         let _ = databaseController?.addSpending(amount: amount, category: category, desc: description, date: date)
-        
+        totalSpending += amount
         navigationController?.popViewController(animated: true)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoryTextField.text = categories[row]
+        categoryTextField.resignFirstResponder()
     }
     
     func displayMessage(title: String, message: String){

@@ -38,6 +38,8 @@ class ViewSpendingViewController: UIViewController {
             categoryView.backgroundColor = UIColor(named: "RedColour")
         } else if viewedSpending.category == "Transport" {
             categoryView.backgroundColor = UIColor(named: "YellowColour")
+        } else if viewedSpending.category == "Others" {
+            categoryView.backgroundColor = UIColor(named: "BrownColour")
         }
         
         // Do any additional setup after loading the view.

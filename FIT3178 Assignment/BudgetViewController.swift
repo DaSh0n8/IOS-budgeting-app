@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BudgetViewController: UIViewController, SetBudgetDelegate {
+class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     func setToBudget(_ budget: Int32) {
         budgetText.text = "$ \(String(budget))"
     }
@@ -15,14 +16,20 @@ class BudgetViewController: UIViewController, SetBudgetDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self,
+                               forCellReuseIdentifier: "CategoryCell")
         // Do any additional setup after loading the view.
     }
     
     var budget: String?
     var spending: Int?
+    let SECTION_CATEGORY = 0
+    let CELL_CATEGORY = "categoryCell"
+    let categories = ["Food","Bills","Transport","Groceries","Shopping","Others"]
     
-
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var monthText: UILabel!
     @IBOutlet weak var spendingText: UILabel!
     @IBOutlet weak var budgetText: UILabel!
@@ -32,11 +39,32 @@ class BudgetViewController: UIViewController, SetBudgetDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! SetBudgetViewController
-        destination.delegate = self
+        if segue.identifier == "setBudgetSegue"{
+            let destination = segue.destination as! SetBudgetViewController
+            destination.delegate = self
+        } else if segue.identifier == "viewCategorySegue"{
+            //a
+        }
+        
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell",
+                                                     for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = self.categories[indexPath.row]
+        content.secondaryText = "$"
+        cell.contentConfiguration = content
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "viewCategorySegue", sender: self)
+    }
     /*
     // MARK: - Navigation
 
