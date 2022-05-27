@@ -30,6 +30,11 @@ protocol DatabaseProtocol: AnyObject {
     func removeListener(listener: DatabaseListener)
     
     func addSpending(amount: Int32, category: String, desc: String, date: Date) -> Spending
+    func fetchSpendingByDateAndCategory(month: String, year: String, category: String) -> Int32
+    func fetchSpendingsOfCategory (category: String) -> Int32
+    func fetchSpendingAmountThisMonth() -> Int32
     func addBudget(budget: Int32) -> Budget
+    func editBudget(newAmount: Int32)
     func deleteSpending(spending: Spending)
+    func fetchBudget() -> Budget
 }

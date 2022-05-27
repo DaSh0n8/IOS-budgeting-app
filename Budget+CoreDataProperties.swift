@@ -2,7 +2,7 @@
 //  Budget+CoreDataProperties.swift
 //  FIT3178 Assignment
 //
-//  Created by Brandon Lim on 19/05/2022.
+//  Created by Brandon Lim on 25/05/2022.
 //
 //
 
@@ -17,6 +17,7 @@ extension Budget {
     }
 
     @NSManaged public var budget: Int32
+    @NSManaged public var id: Int16
 
 }
 

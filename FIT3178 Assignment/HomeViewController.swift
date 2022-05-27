@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Charts
+import SwiftUICharts
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, DatabaseListener {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, ChartViewDelegate, DatabaseListener {
     
     let SECTION_SPENDING = 0
     let SECTION_INFO = 1
@@ -19,8 +21,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var listenerType = ListenerType.spending
     weak var databaseController : DatabaseProtocol?
     var totalSpending: Int32 = 0
+    var pieChart = PieChartView()
     
-    @IBOutlet weak var totalSpendingLabel: UILabel!
+    var foodCategory = PieChartDataEntry(value: 0)
+    var billsCategory = PieChartDataEntry(value: 0)
+    var transportCategory = PieChartDataEntry(value: 0)
+    var groceriesCategory = PieChartDataEntry(value: 0)
+    var shoppingCategory = PieChartDataEntry(value: 0)
+    var othersCategory = PieChartDataEntry(value: 0)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +47,53 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         definesPresentationContext = true
         
-        let x = String(totalSpending)
-        totalSpendingLabel.text = x
+//        let x = String(totalSpending)
+//        totalSpendingLabel.text = x
         
         tableView.delegate = self
         tableView.dataSource = self
+        pieChart.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        pieChart.frame = CGRect(x: 0, y: 120, width: 400, height: 240)
+        
+        view.addSubview(pieChart)
+
+        let foodValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Food"))!)
+        foodCategory = PieChartDataEntry(value: foodValue)
+        foodCategory.label = "Food"
+        let billsValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Bills"))!)
+        billsCategory = PieChartDataEntry(value: billsValue)
+        billsCategory.label = "Bills"
+        let transportValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Transport"))!)
+        transportCategory = PieChartDataEntry(value: transportValue)
+        transportCategory.label = "Transport"
+        let groceriesValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Groceries"))!)
+        groceriesCategory = PieChartDataEntry(value: groceriesValue)
+        groceriesCategory.label = "Groceries"
+        let shoppingValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Shopping"))!)
+        shoppingCategory = PieChartDataEntry(value: shoppingValue)
+        shoppingCategory.label = "Shopping"
+        let othersValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Others"))!)
+        othersCategory = PieChartDataEntry(value: othersValue)
+        othersCategory.label = "Others"
+        
+        var entries = [ChartDataEntry]()
+        entries = [foodCategory, billsCategory, transportCategory, groceriesCategory, shoppingCategory, othersCategory]
+
+
+        let set = PieChartDataSet(entries: entries)
+        let chartColors = [UIColor(named: "GreenColour"), UIColor(named: "LightBlueColour"), UIColor(named: "YellowColour"), UIColor(named: "RedColour"), UIColor(named: "PurpleColour"), UIColor(named: "BrownColour")]
+        set.colors = chartColors as! [NSUIColor]
+        let data = PieChartData(dataSet: set)
+        pieChart.data = data
+    }
+    
+    func updateChartData() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

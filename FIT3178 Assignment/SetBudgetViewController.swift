@@ -31,7 +31,7 @@ class SetBudgetViewController: UIViewController {
         guard let newBudget: Int32 = Int32(budgetTextField.text!) else {
             return
         }
-        let _ = databaseController?.addBudget(budget: newBudget)
+        databaseController?.editBudget(newAmount: newBudget)
         delegate?.setToBudget(newBudget)
         navigationController?.popViewController(animated: true)
     }
