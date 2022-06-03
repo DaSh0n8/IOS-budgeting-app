@@ -262,14 +262,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="totalCell" id="2Vv-0L-ymx" customClass="SpendingCountTableViewCell" customModule="FIT3178_Assignment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="93" width="374" height="36.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Vv-0L-ymx" id="xxm-Bm-XXE">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="36.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gU6-tu-vYv">
-                                                    <rect key="frame" x="20" y="11" width="334" height="14"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
@@ -540,18 +540,60 @@
         <!--Category Comparison-->
         <scene sceneID="rhm-P4-mT1">
             <objects>
-                <viewController id="NMc-St-CMt" sceneMemberID="viewController">
+                <viewController id="NMc-St-CMt" customClass="CategoryComparisonViewController" customModule="FIT3178_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bzM-l1-hnd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="069-KN-atn">
+                                <rect key="frame" x="30" y="123" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xs0-Gb-4iT">
+                                <rect key="frame" x="30" y="220" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-jz-ZKb">
+                                <rect key="frame" x="34" y="164" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-6r-twj">
+                                <rect key="frame" x="34" y="261" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="KGu-9b-ydr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KGu-9b-ydr" firstAttribute="trailing" secondItem="069-KN-atn" secondAttribute="trailing" constant="30" id="8YL-Of-yjF"/>
+                            <constraint firstItem="xs0-Gb-4iT" firstAttribute="top" secondItem="dk1-jz-ZKb" secondAttribute="bottom" constant="35" id="F8M-Kz-Cbx"/>
+                            <constraint firstItem="Y5i-6r-twj" firstAttribute="top" secondItem="xs0-Gb-4iT" secondAttribute="bottom" constant="20" id="Hpd-31-N0g"/>
+                            <constraint firstItem="xs0-Gb-4iT" firstAttribute="leading" secondItem="KGu-9b-ydr" secondAttribute="leading" constant="30" id="Ijs-p9-k8y"/>
+                            <constraint firstItem="069-KN-atn" firstAttribute="leading" secondItem="KGu-9b-ydr" secondAttribute="leading" constant="30" id="OCH-5F-hTH"/>
+                            <constraint firstItem="069-KN-atn" firstAttribute="top" secondItem="KGu-9b-ydr" secondAttribute="top" constant="35" id="SvT-pk-MOe"/>
+                            <constraint firstItem="KGu-9b-ydr" firstAttribute="trailing" secondItem="xs0-Gb-4iT" secondAttribute="trailing" constant="30" id="eIG-9D-lCk"/>
+                            <constraint firstItem="dk1-jz-ZKb" firstAttribute="top" secondItem="069-KN-atn" secondAttribute="bottom" constant="20" id="o06-az-OjV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Category Comparison" id="8sC-YG-0cr"/>
+                    <connections>
+                        <outlet property="lastMonth" destination="xs0-Gb-4iT" id="uis-sx-Far"/>
+                        <outlet property="lastMonthSpending" destination="Y5i-6r-twj" id="xTf-VY-tRr"/>
+                        <outlet property="thisMonth" destination="069-KN-atn" id="zrc-iZ-qhV"/>
+                        <outlet property="thisMonthSpending" destination="dk1-jz-ZKb" id="Y0a-dT-kU7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNF-g1-ELU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="2180"/>
+            <point key="canvasLocation" x="-336.23188405797106" y="2179.6875"/>
         </scene>
         <!--User Statistics-->
         <scene sceneID="msT-Id-Bf5">

@@ -23,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "MMMM yyyy"
        
-        let _ = databaseController?.addBudget(budget: 0)
-        let budget = databaseController?.fetchBudget()
-        if budget == nil{
-            let _ = databaseController?.addBudget(budget: 0)
-        }
+//        let _ = databaseController?.addBudget(budget: 0)
+//        let budget = databaseController?.fetchBudget()
+//        if budget == nil{
+//            let _ = databaseController?.addBudget(budget: 0)
+//        }
         
         let calendar = Calendar.current
         let currentMonth = calendar.component(.month, from: date)

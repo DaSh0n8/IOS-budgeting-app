@@ -28,13 +28,15 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         let currentYear = String(calendar.component(.year, from: date))
         
         let dateString = currentYear + "-" + currentMonth
-        print(dateString)
         let monthYear = dateFormatter.date(from: dateString)
-        print(monthYear)
         monthText.text = dateFormatter.string(from: monthYear!)
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         databaseController = appDelegate?.databaseController
+        
+        
+        let tempBudget = databaseController?.fetchBudget()
+        budgetText.text = String(tempBudget!.budget)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,6 +60,7 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
     let dateFormatter = DateFormatter()
     let CELL_CATEGORY = "categoryCell"
     let categories = ["Food","Bills","Transport","Groceries","Shopping","Others"]
+    var thisCategory: String?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var monthText: UILabel!
@@ -73,7 +76,8 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
             let destination = segue.destination as! SetBudgetViewController
             destination.delegate = self
         } else if segue.identifier == "viewCategorySegue"{
-            //a
+            let destination = segue.destination as! CategoryComparisonViewController
+            destination.spendingCategory = thisCategory
         }
         
     }
@@ -111,7 +115,9 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "viewCategorySegue", sender: self)
+        let tempCategory = categories[indexPath.row]
+        thisCategory = tempCategory
+        self.performSegue(withIdentifier: "viewCategorySegue", sender: self)
     }
     
     /*

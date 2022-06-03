@@ -10,6 +10,7 @@
 		0018C7BE28B7BA2E18E3C003 /* Pods_FIT3178_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D861210ADAE7B7C0233D6 /* Pods_FIT3178_Assignment.framework */; };
 		CA0253F828331E3F00852649 /* App-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA0253F628331E3F00852649 /* App-DataModel.xcdatamodeld */; };
 		CA0A710C2840A40B00B91C58 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */; };
+		CA0A710E2840AA3A00B91C58 /* CategoryComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */; };
 		CA109EF62834DE8A00A8ACFE /* Spending+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA109EF42834DE8A00A8ACFE /* Spending+CoreDataClass.swift */; };
 		CA109EF72834DE8A00A8ACFE /* Spending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA109EF52834DE8A00A8ACFE /* Spending+CoreDataProperties.swift */; };
 		CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172722823D14E000A520B /* AddSpendingDelegate.swift */; };
@@ -41,6 +42,7 @@
 		A3EDE0C69D6EE861DF214ABD /* Pods-FIT3178 Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT3178 Assignment.debug.xcconfig"; path = "Target Support Files/Pods-FIT3178 Assignment/Pods-FIT3178 Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0253F728331E3F00852649 /* App-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "App-DataModel.xcdatamodel"; sourceTree = "<group>"; };
 		CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
+		CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryComparisonViewController.swift; sourceTree = "<group>"; };
 		CA109EF42834DE8A00A8ACFE /* Spending+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		CA109EF52834DE8A00A8ACFE /* Spending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CA2172722823D14E000A520B /* AddSpendingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				CAD5D7742824E9C5006F42FF /* ViewSpendingViewController.swift */,
 				CA29E0B62836595F00B0F4F5 /* SettingsViewController.swift */,
 				CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */,
+				CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */,
 			);
 			path = "FIT3178 Assignment";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */,
 				CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */,
 				CA4D3EAA283E42A700698C9E /* Budget+CoreDataProperties.swift in Sources */,
+				CA0A710E2840AA3A00B91C58 /* CategoryComparisonViewController.swift in Sources */,
 				CA109EF72834DE8A00A8ACFE /* Spending+CoreDataProperties.swift in Sources */,
 				CA0A710C2840A40B00B91C58 /* UserStatsViewController.swift in Sources */,
 				CA0253F828331E3F00852649 /* App-DataModel.xcdatamodeld in Sources */,

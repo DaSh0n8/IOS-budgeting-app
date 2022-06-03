@@ -86,9 +86,13 @@ class CoreDataController: NSObject, DatabaseProtocol {
         request.fetchLimit = 1
         let context = persistentContainer.viewContext
         do{
-            budget = try context.fetch(request).first!
+            budget = try context.fetch(request).first
         } catch {
             print("Fetch Request failed with error: \(error)")
+        }
+        
+        if budget == nil {
+            budget = addBudget(budget: 10)
         }
         return budget!
         
@@ -189,6 +193,43 @@ class CoreDataController: NSObject, DatabaseProtocol {
 
         for spending in spendings {
             print(spending.amount)
+            monthAmount += spending.amount
+            
+        }
+        
+        return monthAmount
+    }
+    
+    func fetchSpendingAmountByMonth(month: Int) -> Int32 {
+        var monthAmount: Int32 = 0
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "yyyy-MM"
+        
+        let calendar = Calendar.current
+        let currentYear = String(calendar.component(.year, from: date))
+        
+        let prevMonth = month
+        let currentMonth = month + 1
+        let prevMonthString = String(month)
+        let currentMonthString = String(currentMonth)
+        let prevDateString = currentYear + "-" + prevMonthString
+        let prevDate = dateFormatter.date(from: prevDateString)
+        let currentDateString = currentYear + "-" + currentMonthString
+        let finalDate = dateFormatter.date(from: currentDateString)
+        
+        var spendings: [Spending] = fetchAllSpendings()
+        let predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", prevDate! as NSDate, finalDate! as NSDate)
+        let fetchRequest = NSFetchRequest<Spending>(entityName: "Spending")
+        fetchRequest.predicate = predicate
+        do {
+            try spendings = persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetch Request failed with error: \(error)")
+        }
+
+        for spending in spendings {
             monthAmount += spending.amount
             
         }

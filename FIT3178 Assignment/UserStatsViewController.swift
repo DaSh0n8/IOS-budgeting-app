@@ -15,6 +15,7 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var pickerView = UIPickerView()
     var barChart = BarChartView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
