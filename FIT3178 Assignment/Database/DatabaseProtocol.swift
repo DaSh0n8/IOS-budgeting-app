@@ -38,4 +38,7 @@ protocol DatabaseProtocol: AnyObject {
     func editBudget(newAmount: Int32)
     func deleteSpending(spending: Spending)
     func fetchBudget() -> Budget
+    
+    func getTotalSpendingsOnEachMonth() -> [Int]
+    func addMonthsFromSpendings()
 }

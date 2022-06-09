@@ -108,6 +108,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func onAllSpendingsChange(change: DatabaseChange, spendings: [Spending]) {
         allSpendings = spendings
+        tableView.reloadData()
         updateSearchResults(for: navigationItem.searchController!)
     }
 
@@ -163,7 +164,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else {
             let infoCell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath) as! SpendingCountTableViewCell
-            infoCell.totalLabel?.text = "\(filteredSpendings.count) spendings this month"
+            infoCell.totalLabel?.text = "\(filteredSpendings.count) spendings"
 
             return infoCell
         }

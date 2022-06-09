@@ -7,8 +7,9 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
-class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDelegate, UITableViewDataSource {
+class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDelegate, UITableViewDataSource{
     
     func setToBudget(_ budget: Int32) {
         budgetText.text = "$ \(String(budget))"
@@ -17,6 +18,12 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound])
+            { (granted, error) in
+        }
         
         databaseController = CoreDataController()
         let date = Date()
@@ -45,12 +52,39 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         
         let spendingThisMonth = databaseController?.fetchSpendingAmountThisMonth()
         spendingText.text = String(spendingThisMonth ?? 0)
-        if pageBudget ?? 0 > spendingThisMonth! {
+        if tempBudget!.budget > spendingThisMonth! {
             spendingText.textColor = UIColor(named: "GreenColour")
         } else {
             spendingText.textColor = UIColor(named: "RedColour")
         }
         // Do any additional setup after loading the view.
+        
+        let notiAmount = (tempBudget!.budget * 80) / 100
+        if spendingThisMonth! > notiAmount && tempBudget!.budget > spendingThisMonth! {
+            // Creating notification content
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Nearing Budget"
+            content.body = "You are about to exceed 80% of your budget this month"
+            
+            // Creating notification trigger
+            
+            let notiDate = Date().addingTimeInterval(15)
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: notiDate)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            
+            // Creating request
+            
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            
+            // Register request
+            
+            center.add(request) { (error) in
+                
+            }
+        }
     }
     
     var pageBudget: Int32?

@@ -12,9 +12,10 @@
         <attribute name="shopping" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="transport" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Month" representedClassName="Month" syncable="YES" codeGenerationType="class">
-        <attribute name="monthName" optional="YES" attributeType="String"/>
-        <attribute name="totalSpending" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="Month" representedClassName="Month" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="month" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Spending" representedClassName="Spending" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -25,7 +26,7 @@
     <elements>
         <element name="Budget" positionX="-45" positionY="27" width="128" height="59"/>
         <element name="Category" positionX="-54" positionY="9" width="128" height="119"/>
-        <element name="Month" positionX="-63" positionY="9" width="128" height="59"/>
         <element name="Spending" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Month" positionX="-45" positionY="54" width="128" height="74"/>
     </elements>
 </model>

@@ -11,6 +11,8 @@
 		CA0253F828331E3F00852649 /* App-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA0253F628331E3F00852649 /* App-DataModel.xcdatamodeld */; };
 		CA0A710C2840A40B00B91C58 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */; };
 		CA0A710E2840AA3A00B91C58 /* CategoryComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */; };
+		CA0F15A0284DF2B700394F15 /* Month+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F159E284DF2B700394F15 /* Month+CoreDataClass.swift */; };
+		CA0F15A1284DF2B700394F15 /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F159F284DF2B700394F15 /* Month+CoreDataProperties.swift */; };
 		CA109EF62834DE8A00A8ACFE /* Spending+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA109EF42834DE8A00A8ACFE /* Spending+CoreDataClass.swift */; };
 		CA109EF72834DE8A00A8ACFE /* Spending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA109EF52834DE8A00A8ACFE /* Spending+CoreDataProperties.swift */; };
 		CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2172722823D14E000A520B /* AddSpendingDelegate.swift */; };
@@ -18,6 +20,7 @@
 		CA2383FE2833B12B00EFA840 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383FD2833B12B00EFA840 /* DatabaseProtocol.swift */; };
 		CA2384002833B27200EFA840 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2383FF2833B27200EFA840 /* CoreDataController.swift */; };
 		CA29E0B72836595F00B0F4F5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29E0B62836595F00B0F4F5 /* SettingsViewController.swift */; };
+		CA30A86B2850B42C00361A38 /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30A86A2850B42C00361A38 /* BarChartFormatter.swift */; };
 		CA43CAE22824323C00DDAC11 /* SpendingCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */; };
 		CA4CB5B9281AEF4600DF04C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */; };
 		CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */; };
@@ -43,6 +46,8 @@
 		CA0253F728331E3F00852649 /* App-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "App-DataModel.xcdatamodel"; sourceTree = "<group>"; };
 		CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
 		CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryComparisonViewController.swift; sourceTree = "<group>"; };
+		CA0F159E284DF2B700394F15 /* Month+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CA0F159F284DF2B700394F15 /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CA109EF42834DE8A00A8ACFE /* Spending+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		CA109EF52834DE8A00A8ACFE /* Spending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CA2172722823D14E000A520B /* AddSpendingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +55,7 @@
 		CA2383FD2833B12B00EFA840 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		CA2383FF2833B27200EFA840 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		CA29E0B62836595F00B0F4F5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CA30A86A2850B42C00361A38 /* BarChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
 		CA43CAE12824323C00DDAC11 /* SpendingCountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCountTableViewCell.swift; sourceTree = "<group>"; };
 		CA4CB5B8281AEF4600DF04C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CA4CB5BA281AEF6E00DF04C5 /* AddSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,8 @@
 		CA0253F528331E2200852649 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				CA0F159E284DF2B700394F15 /* Month+CoreDataClass.swift */,
+				CA0F159F284DF2B700394F15 /* Month+CoreDataProperties.swift */,
 				CA4D3EA7283E42A700698C9E /* Budget+CoreDataClass.swift */,
 				CA4D3EA8283E42A700698C9E /* Budget+CoreDataProperties.swift */,
 				CA109EF42834DE8A00A8ACFE /* Spending+CoreDataClass.swift */,
@@ -153,6 +161,7 @@
 				CA29E0B62836595F00B0F4F5 /* SettingsViewController.swift */,
 				CA0A710B2840A40B00B91C58 /* UserStatsViewController.swift */,
 				CA0A710D2840AA3A00B91C58 /* CategoryComparisonViewController.swift */,
+				CA30A86A2850B42C00361A38 /* BarChartFormatter.swift */,
 			);
 			path = "FIT3178 Assignment";
 			sourceTree = "<group>";
@@ -292,12 +301,15 @@
 				CAF6F5C428195A7A001EDECD /* ViewController.swift in Sources */,
 				CA4CB5BF281AF0A600DF04C5 /* SetBudgetViewController.swift in Sources */,
 				CA4CB5BD281AF09100DF04C5 /* BudgetViewController.swift in Sources */,
+				CA0F15A0284DF2B700394F15 /* Month+CoreDataClass.swift in Sources */,
+				CA30A86B2850B42C00361A38 /* BarChartFormatter.swift in Sources */,
 				CA4D3EA9283E42A700698C9E /* Budget+CoreDataClass.swift in Sources */,
 				CA2172732823D14E000A520B /* AddSpendingDelegate.swift in Sources */,
 				CA29E0B72836595F00B0F4F5 /* SettingsViewController.swift in Sources */,
 				CA4CB5BB281AEF6E00DF04C5 /* AddSpendingViewController.swift in Sources */,
 				CAF6F5C028195A7A001EDECD /* AppDelegate.swift in Sources */,
 				CAF6F5C228195A7A001EDECD /* SceneDelegate.swift in Sources */,
+				CA0F15A1284DF2B700394F15 /* Month+CoreDataProperties.swift in Sources */,
 				CA2383FC2833B0FF00EFA840 /* MulticastDelegate.swift in Sources */,
 				CA2384002833B27200EFA840 /* CoreDataController.swift in Sources */,
 				CA109EF62834DE8A00A8ACFE /* Spending+CoreDataClass.swift in Sources */,
