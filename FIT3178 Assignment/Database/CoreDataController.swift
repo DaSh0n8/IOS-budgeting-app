@@ -245,6 +245,90 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return totalAmountSpent
     }
     
+    func fetchTotalEachMonth(month: String, year: String) -> Int32{
+        let finalDate: Date?
+        let prevDate: Date?
+        var spendings: [Spending] = fetchAllSpendings()
+        var totalAmountSpent: Int32 = 0
+        if month == "1" {
+            var intMonth = Int(month)
+            intMonth = intMonth! + 1
+            let currentMonth = String(intMonth!)
+            
+            
+            // Setting up date by combining month and year from parameters
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.current
+            dateFormatter.dateFormat = "yyyy-MM"
+            let dateString = year + "-" + currentMonth
+            finalDate = dateFormatter.date(from: dateString)
+            
+            let ly = Int(year)!
+            let lastYear = ly - 1
+            let lastMonth = Int(12)
+            let prevMonth = String(lastMonth)
+            let prevDateString = String(lastYear) + "-" + prevMonth
+            prevDate = dateFormatter.date(from: prevDateString)
+        } else if month == "12" {
+            
+            let intMonth = 1
+            let currentMonth = String(intMonth)
+            
+            // Setting up date by combining month and year from parameters
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.current
+            dateFormatter.dateFormat = "yyyy-MM"
+            let ny = Int(year)!
+            let nextYear = ny + 1
+            let dateString = String(nextYear) + "-" + currentMonth
+            finalDate = dateFormatter.date(from: dateString)
+            
+            let lastMonth = 11
+            let prevMonth = String(lastMonth)
+            let prevDateString = year + "-" + prevMonth
+            prevDate = dateFormatter.date(from: prevDateString)
+        }
+        else {
+            var intMonth = Int(month)
+            intMonth = intMonth! + 1
+            let currentMonth = String(intMonth!)
+            
+            // Setting up date by combining month and year from parameters
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.current
+            dateFormatter.dateFormat = "yyyy-MM"
+            let dateString = year + "-" + currentMonth
+            finalDate = dateFormatter.date(from: dateString)
+            
+            var lastMonth = Int(currentMonth)
+            lastMonth = lastMonth! - 1
+            let prevMonth = String(lastMonth!)
+            let prevDateString = year + "-" + prevMonth
+            prevDate = dateFormatter.date(from: prevDateString)
+        }
+        
+        // Creating predicates
+        //        let datePredicate = NSPredicate(format: "date == %@", finalDate! as NSDate)
+        let datePredicate = NSPredicate(format:  "(date >= %@) AND (date <= %@)", prevDate! as NSDate, finalDate! as NSDate)
+        let fetchRequest = NSFetchRequest<Spending>(entityName: "Spending")
+        fetchRequest.predicate = datePredicate
+        
+        do {
+            try spendings = persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetch Request failed with error: \(error)")
+        }
+        
+        for spending in spendings {
+            totalAmountSpent += spending.amount
+//            if catSpendings.category == category {
+//                totalAmountSpent += catSpendings.amount
+//            }
+        }
+        
+        return totalAmountSpent
+    }
+    
     func fetchSpendingAmountThisMonth() -> Int32 {
         var monthAmount: Int32 = 0
         let date = Date()
@@ -290,20 +374,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         let calendar = Calendar.current
         let currentYear = String(calendar.component(.year, from: date))
-        
-//        if month == 1{
-//            let prevMonth = 12
-//            let currentMonth = month + 1
-//            let prevMonthString = String(month)
-//            let currentMonthString = String(currentMonth)
-//
-//            let currentYear = calendar.component(.year, from: <#T##Date#>)
-//
-//            let prevDateString = currentYear + "-" + prevMonthString
-//            let prevDate = dateFormatter.date(from: prevDateString)
-//            let currentDateString = currentYear + "-" + currentMonthString
-//            let finalDate = dateFormatter.date(from: currentDateString)
-//        }
         
         let prevMonth = month
         let currentMonth = month + 1

@@ -102,11 +102,20 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 //        let customFormatter = BarChartFormatter()
 //        customFormatter.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
         
-        for x in 0..<12{
-            let monthVal = String(x + 1)
-            let val = databaseController?.fetchSpendingByDateAndCategory(month: monthVal, year: currentYear, category: chosenCategory ?? "Food") ?? 0
-            entries.append(BarChartDataEntry(x: Double(x), y: Double(val)))
-            let _ = formato.stringForValue(Double(x), axis: xaxis)
+        if chosenCategory == "Total" {
+            for x in 0..<12{
+                let monthVal = String(x + 1)
+                let val = databaseController?.fetchTotalEachMonth(month: monthVal, year: currentYear) ?? 0
+                entries.append(BarChartDataEntry(x: Double(x), y: Double(val)))
+                let _ = formato.stringForValue(Double(x), axis: xaxis)
+            }
+        } else {
+            for x in 0..<12{
+                let monthVal = String(x + 1)
+                let val = databaseController?.fetchSpendingByDateAndCategory(month: monthVal, year: currentYear, category: chosenCategory ?? "Food") ?? 0
+                entries.append(BarChartDataEntry(x: Double(x), y: Double(val)))
+                let _ = formato.stringForValue(Double(x), axis: xaxis)
+            }
         }
         
         xaxis.valueFormatter = formato
