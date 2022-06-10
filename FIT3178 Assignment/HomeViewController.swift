@@ -47,8 +47,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         definesPresentationContext = true
         
-//        let x = String(totalSpending)
-//        totalSpendingLabel.text = x
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -85,7 +83,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         entries = [foodCategory, billsCategory, transportCategory, groceriesCategory, shoppingCategory, othersCategory]
 
 
-        let set = PieChartDataSet(entries: entries)
+        let set = PieChartDataSet(entries: entries, label: "")
         let chartColors = [UIColor(named: "GreenColour"), UIColor(named: "LightBlueColour"), UIColor(named: "YellowColour"), UIColor(named: "RedColour"), UIColor(named: "PurpleColour"), UIColor(named: "BrownColour")]
         set.colors = chartColors as! [NSUIColor]
         let data = PieChartData(dataSet: set)

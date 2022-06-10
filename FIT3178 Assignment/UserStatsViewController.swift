@@ -124,7 +124,7 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         barChart.xAxis.valueFormatter = xaxis.valueFormatter
         barChart.xAxis.axisMinimum = -0.5
 
-        let set = BarChartDataSet(entries: entries)
+        let set = BarChartDataSet(entries: entries, label: "")
         set.colors = ChartColorTemplates.joyful()
         
         let data = BarChartData(dataSet: set)

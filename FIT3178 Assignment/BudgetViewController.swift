@@ -43,7 +43,7 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         
         
         let tempBudget = databaseController?.fetchBudget()
-        budgetText.text = String(tempBudget!.budget)
+        budgetText.text = "$ \(String(tempBudget!.budget))"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,7 +51,7 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
                                forCellReuseIdentifier: "CategoryCell")
         
         let spendingThisMonth = databaseController?.fetchSpendingAmountThisMonth()
-        spendingText.text = String(spendingThisMonth ?? 0)
+        spendingText.text = "$ \(String(spendingThisMonth ?? 0))"
         if tempBudget!.budget > spendingThisMonth! {
             spendingText.textColor = UIColor(named: "GreenColour")
         } else {
@@ -136,8 +136,13 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         print(amountThisMonth)
         let amountLastMonth = databaseController?.fetchSpendingByDateAndCategory(month: String(currentMonth - 1), year: String(currentYear), category: self.categories[indexPath.row]) ?? 0
         print(amountLastMonth)
-        let finalAmount = Int(amountLastMonth) - Int(amountThisMonth)
-        content.secondaryText = "$\(finalAmount)"
+        var finalAmount = Int(amountLastMonth) - Int(amountThisMonth)
+        if finalAmount < 0 {
+            finalAmount = finalAmount * -1
+            content.secondaryText = "- $\(finalAmount)"
+        } else {
+            content.secondaryText = "$\(finalAmount)"
+        }
         if amountLastMonth > amountThisMonth {
             cell.textLabel?.textColor = UIColor(named: "GreenColour")
         } else {

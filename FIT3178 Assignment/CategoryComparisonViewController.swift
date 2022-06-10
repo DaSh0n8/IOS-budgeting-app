@@ -42,8 +42,8 @@ class CategoryComparisonViewController: UIViewController {
         lastMonth.text = dateFormatter.string(from: lastMonthDate!)
         let thisMonthSpendingInt = databaseController?.fetchSpendingByDateAndCategory(month: currentMonth, year: currentYear, category: spendingCategory)
         let lastMonthSpendingInt = databaseController?.fetchSpendingByDateAndCategory(month: String(lastMonthInt), year: currentYear, category: spendingCategory)
-        thisMonthSpending.text = String(thisMonthSpendingInt!)
-        lastMonthSpending.text = String(lastMonthSpendingInt!)
+        thisMonthSpending.text = String("Total spent this month: $ \(thisMonthSpendingInt!)")
+        lastMonthSpending.text = String("Total spent last month: $ \(lastMonthSpendingInt!)")
         // Do any additional setup after loading the view.
     }
     
