@@ -45,10 +45,14 @@ class AddSpendingViewController: UIViewController, UIPickerViewDelegate, UIPicke
         guard let amount: Int32 = Int32(amountTextField.text!), let category = categoryTextField.text, let description = descriptionTextField.text else{
             return
         }
-        if category.isEmpty {
+        // Validation for input fields
+        if category.isEmpty || String(amount).isEmpty {
             var errorMsg = "Please ensure all fields are filled: \n"
             if category.isEmpty{
                 errorMsg += "Must provide category \n"
+            }
+            if String(amount).isEmpty {
+                errorMsg += "Must provide amount \n"
             }
             displayMessage(title: "Not all fields filled", message: errorMsg)
         }

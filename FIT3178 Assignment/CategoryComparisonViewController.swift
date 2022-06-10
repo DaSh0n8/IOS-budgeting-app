@@ -27,19 +27,26 @@ class CategoryComparisonViewController: UIViewController {
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "yyyy-MM"
         
+        // Getting month and year components
         let calendar = Calendar.current
         let currentMonthInt = calendar.component(.month, from: date)
         let currentMonth = String(currentMonthInt)
-        
+    
         let currentYear = String(calendar.component(.year, from: date))
         let lastMonthInt = (calendar.component(.month, from: date)) - 1
+        
+        // Need to convert the months to strings because calendar.component gives Int values
         let prevMonth = String(lastMonthInt)
         let thisMonthString = currentYear + "-" + currentMonth
         let thisMonthDate = dateFormatter.date(from: thisMonthString)
         thisMonth.text = dateFormatter.string(from: thisMonthDate!)
+        
+        // Formatting last month's date
         let lastMonthString = currentYear + "-" + prevMonth
         let lastMonthDate = dateFormatter.date(from: lastMonthString)
         lastMonth.text = dateFormatter.string(from: lastMonthDate!)
+        
+        // Displaying both months' spending totals
         let thisMonthSpendingInt = databaseController?.fetchSpendingByDateAndCategory(month: currentMonth, year: currentYear, category: spendingCategory)
         let lastMonthSpendingInt = databaseController?.fetchSpendingByDateAndCategory(month: String(lastMonthInt), year: currentYear, category: spendingCategory)
         thisMonthSpending.text = String("Total spent this month: $ \(thisMonthSpendingInt!)")

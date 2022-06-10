@@ -59,6 +59,7 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         }
         // Do any additional setup after loading the view.
         
+        // Creating condition for notification trigger
         let notiAmount = (tempBudget!.budget * 80) / 100
         if spendingThisMonth! > notiAmount && tempBudget!.budget > spendingThisMonth! {
             // Creating notification content
@@ -131,7 +132,7 @@ class BudgetViewController: UIViewController, SetBudgetDelegate, UITableViewDele
         let currentMonth = calendar.component(.month, from: date)
         let currentYear = calendar.component(.year, from: date)
         content.text = self.categories[indexPath.row]
-//        let categoryAmount = databaseController?.fetchSpendingsOfCategory(category: self.categories[indexPath.row])
+        // Getting amount from last month and this month, and then getting the remainder value
         let amountThisMonth = databaseController?.fetchSpendingByDateAndCategory(month: String(currentMonth), year: String(currentYear), category: self.categories[indexPath.row]) ?? 0
         print(amountThisMonth)
         let amountLastMonth = databaseController?.fetchSpendingByDateAndCategory(month: String(currentMonth - 1), year: String(currentYear), category: self.categories[indexPath.row]) ?? 0

@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Dark mode function for accessibility
     @IBAction func onClickSwitch(_ sender: UISwitch) {
         
         if #available(iOS 13.0, *) {

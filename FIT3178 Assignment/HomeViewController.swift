@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var totalSpending: Int32 = 0
     var pieChart = PieChartView()
     
+    // Initialising pie chart values
     var foodCategory = PieChartDataEntry(value: 0)
     var billsCategory = PieChartDataEntry(value: 0)
     var transportCategory = PieChartDataEntry(value: 0)
@@ -60,6 +61,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.addSubview(pieChart)
 
+        // Giving each category their values as well as the name shown on pie chart
         let foodValue = Double((databaseController?.fetchSpendingsOfCategory(category: "Food"))!)
         foodCategory = PieChartDataEntry(value: foodValue)
         foodCategory.label = "Food"
@@ -82,7 +84,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var entries = [ChartDataEntry]()
         entries = [foodCategory, billsCategory, transportCategory, groceriesCategory, shoppingCategory, othersCategory]
 
-
+        // Setting pie chart data as well as giving them custom colours
         let set = PieChartDataSet(entries: entries, label: "")
         let chartColors = [UIColor(named: "GreenColour"), UIColor(named: "LightBlueColour"), UIColor(named: "YellowColour"), UIColor(named: "RedColour"), UIColor(named: "PurpleColour"), UIColor(named: "BrownColour")]
         set.colors = chartColors as! [NSUIColor]
@@ -187,9 +189,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thisSpending = filteredSpendings[indexPath.row]
-        spendingDetails = thisSpending
-        self.performSegue(withIdentifier: "viewSpendingSegue", sender: self)
+        if indexPath.section == 0{
+            let thisSpending = filteredSpendings[indexPath.row]
+            spendingDetails = thisSpending
+            self.performSegue(withIdentifier: "viewSpendingSegue", sender: self)
+        }
+        
     }
     
     @IBOutlet weak var tableView: UITableView!

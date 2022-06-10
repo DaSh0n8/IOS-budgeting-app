@@ -28,6 +28,7 @@ class ViewSpendingViewController: UIViewController {
         amountText.text = "$ \(viewedSpending.amount)"
         descriptionText.text = viewedSpending.desc
         
+        // Giving the viewed categories their assigned colour
         if viewedSpending.category == "Food" {
             categoryView.backgroundColor = UIColor(named: "GreenColour")
         } else if viewedSpending.category == "Shopping" {

@@ -19,31 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         databaseController = CoreDataController()
-        let date = Date()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "MMMM yyyy"
-       
-//        let _ = databaseController?.addBudget(budget: 0)
-//        let budget = databaseController?.fetchBudget()
-//        if budget == nil{
-//            let _ = databaseController?.addBudget(budget: 0)
-//        }
-        
-        let calendar = Calendar.current
-        let currentMonth = calendar.component(.month, from: date)
-        let currentYear = calendar.component(.year, from: date)
-        
-        guard let lastOnline = lastOnline else {
-            return true
-        }
-
-        let lastMonth = calendar.component(.month, from: lastOnline)
-        let lastYear = calendar.component(.year, from: lastOnline)
-        
-        if currentMonth != lastMonth || currentYear != lastYear {
-            // reset category database
-            // create a new instance of everything being 0
-        }
         
         return true
     }

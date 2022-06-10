@@ -92,16 +92,10 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                
         var entries = [BarChartDataEntry]()
         
-//        var entries = [ChartDataEntry]()
-//        for month in months{
-//          entries.append(month)
         let date = Date()
         let calendar = Calendar.current
         let currentYear = String(calendar.component(.year, from: date))
-        
-//        let customFormatter = BarChartFormatter()
-//        customFormatter.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-        
+        // If total is selected
         if chosenCategory == "Total" {
             for x in 0..<12{
                 let monthVal = String(x + 1)
@@ -110,6 +104,7 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 let _ = formato.stringForValue(Double(x), axis: xaxis)
             }
         } else {
+            // If any other category is selected
             for x in 0..<12{
                 let monthVal = String(x + 1)
                 let val = databaseController?.fetchSpendingByDateAndCategory(month: monthVal, year: currentYear, category: chosenCategory ?? "Food") ?? 0
@@ -117,9 +112,9 @@ class UserStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 let _ = formato.stringForValue(Double(x), axis: xaxis)
             }
         }
-        
+        // Formatting bar chart to show x axis values (the months)
         xaxis.valueFormatter = formato
-        
+        // Letting it show all 12 months otherwise it shows only 6
         barChart.xAxis.setLabelCount(12, force: true)
         barChart.xAxis.valueFormatter = xaxis.valueFormatter
         barChart.xAxis.axisMinimum = -0.5

@@ -101,7 +101,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-D2-Pbv">
-                                <rect key="frame" x="0.0" y="496" width="414" height="216"/>
+                                <rect key="frame" x="30" y="496" width="320" height="216"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fqf-Qc-U6O"/>
@@ -125,10 +125,9 @@
                             <constraint firstItem="IWE-9X-ynz" firstAttribute="leading" secondItem="fqf-Qc-U6O" secondAttribute="leading" constant="35" id="eIT-1Z-jJZ"/>
                             <constraint firstItem="7z5-ss-yCu" firstAttribute="top" secondItem="wWe-An-7Rn" secondAttribute="bottom" constant="30" id="fBu-O9-vQD"/>
                             <constraint firstItem="hE2-sf-dDZ" firstAttribute="top" secondItem="IWE-9X-ynz" secondAttribute="bottom" constant="30" id="fpo-gm-tCc"/>
-                            <constraint firstItem="bFh-D2-Pbv" firstAttribute="trailing" secondItem="fqf-Qc-U6O" secondAttribute="trailing" id="hnz-lt-0IZ"/>
+                            <constraint firstItem="bFh-D2-Pbv" firstAttribute="leading" secondItem="fqf-Qc-U6O" secondAttribute="leading" constant="30" id="ha0-QG-Apd"/>
                             <constraint firstItem="fqf-Qc-U6O" firstAttribute="trailing" secondItem="Chg-iA-R6l" secondAttribute="trailing" constant="35" id="kb8-UD-kPz"/>
                             <constraint firstItem="wWe-An-7Rn" firstAttribute="leading" secondItem="fqf-Qc-U6O" secondAttribute="leading" constant="35" id="lMz-k1-A7V"/>
-                            <constraint firstItem="bFh-D2-Pbv" firstAttribute="leading" secondItem="fqf-Qc-U6O" secondAttribute="leading" id="pHS-0S-ObN"/>
                             <constraint firstItem="fqf-Qc-U6O" firstAttribute="trailing" secondItem="iQs-GE-QmR" secondAttribute="trailing" constant="35" id="pan-zM-nMJ"/>
                             <constraint firstItem="iQs-GE-QmR" firstAttribute="top" secondItem="qdT-w4-Zws" secondAttribute="bottom" constant="30" id="w5A-JM-KSl"/>
                             <constraint firstItem="wWe-An-7Rn" firstAttribute="top" secondItem="Chg-iA-R6l" secondAttribute="bottom" constant="23" id="xXA-Fs-1MW"/>
@@ -384,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZv-ci-wha">
-                                <rect key="frame" x="32" y="234" width="170" height="31"/>
+                                <rect key="frame" x="32" y="234" width="232" height="31"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Set new budget"/>
                                 <connections>
                                     <action selector="setBudget:" destination="ubK-aK-Fif" eventType="touchUpInside" id="CvJ-O9-4Rq"/>
@@ -461,7 +460,7 @@
                             <constraint firstItem="rgO-by-EMr" firstAttribute="top" secondItem="vZv-ci-wha" secondAttribute="bottom" constant="25" id="awa-nF-cNR"/>
                             <constraint firstItem="9bG-sS-DlF" firstAttribute="trailing" secondItem="uvI-fg-jTb" secondAttribute="trailing" constant="30" id="bnP-G8-7gC"/>
                             <constraint firstItem="spm-XC-cMH" firstAttribute="top" secondItem="rgO-by-EMr" secondAttribute="bottom" constant="15" id="d7t-QX-10n"/>
-                            <constraint firstItem="9bG-sS-DlF" firstAttribute="trailing" secondItem="vZv-ci-wha" secondAttribute="trailing" constant="212" id="dso-w4-hPC"/>
+                            <constraint firstItem="9bG-sS-DlF" firstAttribute="trailing" secondItem="vZv-ci-wha" secondAttribute="trailing" constant="150" id="dso-w4-hPC"/>
                             <constraint firstItem="9bG-sS-DlF" firstAttribute="trailing" secondItem="nZW-bx-o78" secondAttribute="trailing" constant="100" id="ehn-4a-Wdg"/>
                             <constraint firstItem="nZW-bx-o78" firstAttribute="top" secondItem="uvI-fg-jTb" secondAttribute="bottom" constant="10" id="jb8-8D-2P5"/>
                             <constraint firstItem="Du0-Ko-ljg" firstAttribute="leading" secondItem="9bG-sS-DlF" secondAttribute="leading" constant="100" id="jvv-1w-Qj2"/>
